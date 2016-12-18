@@ -136,10 +136,11 @@ function handleScreenChange(displayElement, state){
 	while(state.currentScreen<screens.length){
 		if(screen===0 && !runOnce){
 			renderedScreen=renderScreen(null, screens[screen].name);
-			alert(renderedScreen);
-			alert(displayElement);
+			//alert(renderedScreen);
+			//alert(displayElement);
 			$(displayElement).append(renderedScreen);
-			alert('Why!!!!!!!!!!!');
+			sleep(500);
+			//alert('Why!!!!!!!!!!!');
 			runOnce=true;
 		}
 		else if(screen!==state.currentScreen){
@@ -164,9 +165,9 @@ function handleStart(startElement, displayElement, state){
 
 function handleSubmitQuestion(submitElement, nextElement){
 	$(submitElement).submit(function(event){
-		console.log('WTF!');
+		console.log('Grr');
 		event.preventDefault();
-		console.log('WTF!');
+		console.log('Grr');
 		/*var userAnswer = $(this).children('input:radio[name="quiz-answer"]:checked').val();
 		var actualAnswer=getAnswer(state.questions, currentQuestion-1);
 		if(userAnswer===actualAnswer)

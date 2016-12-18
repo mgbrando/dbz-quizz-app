@@ -18,7 +18,7 @@ html, body, main{
 	padding-bottom: 38px;
 	height: 100px;
 }
-.start-screen{
+.start-screen, .end-screen{
 	display: table;
 	width: 100%;
 	height: 65%;
@@ -31,12 +31,12 @@ html, body, main{
 	height: 100%;
 	display: table;
 }*/
-.start-button-cell{
+.start-button-cell, .end-button-cell{
   display: table-cell;
   text-align: center;
   vertical-align: middle;
 }
-.start-button{
+.start-button, .end-display{
 	width: 276px;
 	height: 20%;
 }

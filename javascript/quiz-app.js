@@ -1,6 +1,8 @@
 var state={
 	currentScreen: 0,
-	screens: ['start', 'questions', 'end'],
+	screens: [{name: 'start', element: '.js-start-screen'}, 
+				{name: 'questions', element: '.js-questions'}, 
+				{name: 'end', element: '.js-end-screen'}],
 	currentQuestion: 1,
 	score: {correct: 0, incorrect: 0},
 	questions: [
@@ -32,6 +34,11 @@ var state={
 		}
 	]
 }
+var startTemplate =	'<section class="js-start-screen start-screen center">'+
+						'<div class="start-button-cell">'+
+							'<button class="js-start-button start-button" type="button">Start Quiz</button>'+
+						'</div>'+	
+					'</section>';
 
 var questionTemplate='<section class="js-question question-section">'+
 						'<header class="question-header">Question 1 of 5</header>'+
@@ -45,6 +52,16 @@ var questionTemplate='<section class="js-question question-section">'+
 
 							'<button type="submit">Submit</button>'+
 						'</form>'
+					'</section>';
+
+var endTemplate='<section class="js-end-screen end-screen center">'+
+						'<div class="end-button-cell">'+
+							'<div class="end-display">'+
+								'<header class="end-header">Quiz Complete!</header>'+
+								'<p class="end-result"><span>Final Score:</span></p>'+
+								'<p class="end-words"></p>'+
+							'</div>'+
+						'</div>'+	
 					'</section>';
 
 //State Mutator Functions
@@ -62,6 +79,31 @@ function updateScore(score, answer){
 }
 
 //Render Content
+function renderScreen(previousScreen, newScreen){
+	if(previousScreen!==null)
+		$(previousScreen).remove();
+	alert(newScreen);
+	switch(newScreen){
+		case 'start':
+			newScreen=renderStartScreen(startTemplate);
+			break;
+
+		case 'questions':
+			newScreen=renderQuestion(questionTemplate, state.questions, state.currentQuestion);
+			break;
+
+		case 'end':
+			newScreen=renderEndScreen(endTemplate);
+			break;
+
+		default:
+			newScreen=renderStartScreen(startTemplate);
+			break;
+	}
+	alert(newScreen);
+	return newScreen;
+}
+
 function renderQuestion(questionTemplate, questions, currentQuestion){
 	var questionElement=$(questionTemplate);
 	var question=retrieveQuestion(questions, currentQuestion-1);
@@ -77,11 +119,46 @@ function renderQuestion(questionTemplate, questions, currentQuestion){
 	return questionElement;
 }
 
+function renderStartScreen(startTemplate){
+	return startTemplate;
+}
+
+function renderEndScreen(){
+
+}
+
 //Event Handlers
-function handleStart(startElement, questionElement){
-	$(startElement).on('click', 'button', function(event){
-		$(this).parent().parent().remove();
-		$(questionElement).append(renderQuestion(questionTemplate, state.questions, state.currentQuestion));
+function handleScreenChange(displayElement, state){
+	var screens=state.screens;
+	var screen=state.currentScreen;
+	var renderedScreen="";
+	var runOnce=false;
+	while(state.currentScreen<screens.length){
+		if(screen===0 && !runOnce){
+			renderedScreen=renderScreen(null, screens[screen].name);
+			alert(renderedScreen);
+			alert(displayElement);
+			$(displayElement).append(renderedScreen);
+			alert('Why!!!!!!!!!!!');
+			runOnce=true;
+		}
+		else if(screen!==state.currentScreen){
+			renderedScreen=renderScreen(displayElement, screens[screen].name, screens[state.currentScreen].name);
+			screen=state.currentScreen;
+			alert('hi diddle diddle');
+			$(displayElement).append(renderedScreen);
+			//while(screen!==state.currentScreen){}
+		}
+		//alert('hi diddle diddle 2');
+	}
+}
+
+function handleStart(startElement, displayElement, state){
+	$(displayElement).on('click', startElement+' button', function(event){
+		/*$(this).parent().parent().remove();
+		$(questionElement).append(renderQuestion(questionTemplate, state.questions, state.currentQuestion));*/
+		state.currentScreen+=1;
+		alert(state.currentScreen);
 	});
 }
 
@@ -109,12 +186,15 @@ function handleSubmitQuestion(submitElement, nextElement){
 }*/
 
 $(document).ready(function(){
-	var questionElement='.js-reveal-questions';
+	var displayElement='.js-display-screen';
 	var startElement='.js-start-screen';
 	var submitElement='#js-answer-form';
 	var nextElement='.js-next-button';
+	var questionsElement='.js-questions'
+	var endElement='.js-end-screen';
 
-	handleStart(startElement, questionElement);
-	handleSubmitQuestion(submitElement, nextElement);
+	handleStart(startElement, displayElement, state);
+	//handleSubmitQuestion(submitElement, nextElement);
 	//handleNextQuestion(nextElement, questionElement);
+	handleScreenChange(displayElement, state);
 });

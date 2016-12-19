@@ -4,21 +4,21 @@
 html, body, main{
 	height: 100%;
 }
-.hidden{
+.hidden, .submit-button.hidden, .next-button.hidden{
 	display: none;
 }
 .center{
 	margin: 0 auto;
 }
 .main-header{
-	font-size: 24px;
+	font-size: 32px;
 	font-weight: bold;
 	text-align: center;
 	padding-top: 38px;
 	padding-bottom: 38px;
 	height: 100px;
 }
-.start-screen{
+.start-screen, .end-screen{
 	display: table;
 	width: 100%;
 	height: 65%;
@@ -31,7 +31,7 @@ html, body, main{
 	height: 100%;
 	display: table;
 }*/
-.start-button-cell{
+.start-button-cell, .end-button-cell{
   display: table-cell;
   text-align: center;
   vertical-align: middle;
@@ -41,10 +41,91 @@ html, body, main{
 	height: 20%;
 }
 .correct{
-	background-color: green;
+	border: 2px solid darkgreen;
+	background-color: lightgreen;
 }
 .incorrect{
+	border: 2px solid darkred;
 	background-color: red;
+}
+.question-section{
+	width: 60%;
+	margin: 0 auto;
+}
+.question-header{
+	font-weight: bold;
+	border-bottom: 5px solid black;
+}
+.question-number, .quiz-score{
+	width: 50%;
+	display: inline-block;
+}
+.question-number{
+	font-size: 28px;
+
+}
+.quiz-score{
+	font-size: 18px;
+	text-align: right;
+}
+.question{
+	font-size: 24px;
+	font-style: italic;
+	text-align: center;
+}
+.answer-result{
+	height: 40px;
+	line-height: 36px;
+}
+#js-answer-form{
+	width: 98%;
+	margin: 0 auto;
+}
+#js-answer-form div{
+	text-align: left;
+	display: inline-block;
+	width: 49%;
+	height: 50px;
+	padding: 0 5px;
+	border: 2px solid black;
+	/*line-height: 50px;*/
+	/*padding: 18px 10px 0 10px;*/
+}
+#js-answer-form div label{
+	position: relative;
+	top: 16px;
+}
+#js-answer-form div:nth-child(even){
+	margin-right: 2%;
+}
+#js-answer-form div:nth-child(n-2){
+	margin-bottom: 2%;
+}
+
+#js-answer-form div input{
+	position: relative;
+	top: 17px;
+	margin-left: 33%;
+	margin-right: 10px;
+	width: 18px;
+	height: 18px;
+}
+
+.question-section buttons{
+}
+
+.submit-button, .next-button{
+	margin-top: 10px;
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.label-center{
+	/*margin-left: 35%;*/
+	width: 80px;
+	margin: 0 auto;
 }
 /*.start-button{
 	width: 33.33%;

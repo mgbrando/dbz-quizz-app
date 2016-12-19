@@ -132,14 +132,34 @@ html, body, main{
 	height: 33.33%;
 }*/
 
-@media screen and (min-width: 720px){
-	.start-button{
-  		/*display: table-cell;
-  		text-align: center;
-  		vertical-align: middle;
-  		width: 300px;*/
-  		/*height: 500px;*/
-  		/*width: 20%;
-  		height: 20%;*/
+/*media queries*/
+@media screen and (max-width: 520px){
+	.start-screen, .question-section, .end-screen{
+		width: 100%;
+		margin-right: 0;
+		margin-left: 0;
+		padding-left: 5px;
+		padding-right: 5px;
+	} 
+}
+@media screen and (max-width: 900px){
+	header .question-number, header .quiz-score{
+		width: 100%;
+		margin-right: 0;
+		display: block;
+	}
+	.quiz-score{
+		text-align: left;
+	}
+	#js-answer-form div input{
+		margin-left: 25%;
+	}
+}
+@media screen and (max-width: 1040px){
+	.question-number{
+		width: 40%;
+	}
+	.quiz-score{
+		width: 60%;
 	}
 }

@@ -27,7 +27,7 @@ var state={
 		},
 		{
 			question: 'Which of these planets are not used as a setting in Dragon Ball Z?',
-			answer: 'Vegeta',
+			answer: 'Mars',
 			choices: [ 'Namek', 'Vegeta', 'Earth', 'Mars']
 		}
 	]
@@ -104,24 +104,24 @@ function getFeedback(score, totalQuestions){
 			feedback='Big goose egg for you huh? Better luck next time....';
 			break;
 
-		case (finalScore > 0 || finalScore < 21):
+		case (finalScore > 0 && finalScore < 21):
 			feedback='I guess you may have seen an episode.... or maybe a meme.';
 			break;
 
-		case (finalScore >= 21 || finalScore < 41):
+		case (finalScore >= 21 && finalScore < 41):
 			feedback='I bet you watched DBZ back in the day, but its been a while.';
 			break;
 
-		case (finalScore >= 41 || finalScore < 61):
+		case (finalScore >= 41 && finalScore < 61):
 			feedback='Not too bad. You need to go back and watch all 291 episodes '+
 			 'before you can claim to be an expert though.';
 			 break;
 
-		case (finalScore >= 61 || finalScore < 81):
-			feedback='Good job. What? Did you expect more? Next time go for 80% or above then. >.>';
+		case (finalScore >= 61 && finalScore < 81):
+			feedback='Good job. What? Did you expect more? Next time go for 81% or above then. >.>';
 			break;
 
-		case (finalScore >= 81 || finalScore < 100):
+		case (finalScore >= 81 && finalScore < 100):
 			feedback='Okay. Okay. You know your stuff. You are a true fan. I bet your finger must '+
 			'have slipped when you chose incorrectly.';
 			break;

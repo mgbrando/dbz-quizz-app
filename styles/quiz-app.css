@@ -74,6 +74,7 @@ html, body, main{
 	text-align: center;
 }
 .answer-result{
+	text-align: center;
 	height: 40px;
 	line-height: 36px;
 }

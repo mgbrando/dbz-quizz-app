@@ -193,7 +193,6 @@ function handleSubmitQuestion(submitElement, displayElement, nextElement, state)
 		var userAnswer = checkedAnswer.next().text();
 		var answerObject=getAnswer(state.questions, state.currentQuestion-1);
 		var actualAnswer=answerObject.answer;
-		console.log(userAnswer+' : '+actualAnswer);
 		var correct=updateScore(state.score, userAnswer, actualAnswer);
 		if(correct){
 			$(this).children('.js-answer-result').text("That answer is CORRECT!").addClass('correct').removeClass('hidden');
